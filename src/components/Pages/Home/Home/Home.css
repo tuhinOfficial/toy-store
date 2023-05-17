@@ -1,0 +1,9 @@
+.client{
+    background-image:
+    linear-gradient(to right, rgba(245, 246, 252, 0.363), rgba(117, 19, 93, 0.73)),
+    url('https://i.ibb.co/6y4tysb/fluffy-toy-texture-close-up.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-origin: content-box;
+}
