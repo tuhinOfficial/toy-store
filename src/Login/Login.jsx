@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../components/Providers/AuthProvider";
-import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {

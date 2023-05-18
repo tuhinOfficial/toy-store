@@ -6,7 +6,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 const Navbar = () => {
   const { user, logOut, userName, photo, loading } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   if (loading) {
     return (
@@ -35,11 +35,11 @@ const Navbar = () => {
       <Link to="/">
         <li>Home</li>
       </Link>
-      <li>All Toys</li>
+      <Link to="/alltoys">All Toys</Link>
       {user ? (
         <>
           <li>My Toys</li>
-          <li>Add A Toys</li>
+          <Link to="/addtoys"><li>Add A Toys</li></Link>
         </>
       ) : (
         <></>
