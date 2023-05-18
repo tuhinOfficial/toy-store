@@ -1,22 +1,26 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
+import { Watch } from "react-loader-spinner";
 
 export const AuthContext = createContext();
 
-const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   console.log(user);
-  
-  const [userName , setUserName] = useState('');
-  const [photo  ,setPhoto] = useState('');
+  const googleProvider = new GoogleAuthProvider();
+
+  const [userName, setUserName] = useState("");
+  const [photo, setPhoto] = useState("");
 
   const auth = getAuth(app);
   const loggedUser = auth.currentUser;
@@ -28,38 +32,91 @@ const AuthProvider = ({ children }) => {
       setUserName(Name);
       const photo = user.photoURL;
       setPhoto(photo);
-  
+
       const uid = loggedUser.uid;
     }
-  })
-  
-  
-  
+  });
+
   const createUser = (email, password) => {
+    setLoading(
+      <Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    );
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logIn = (email, password) => {
+    setLoading(
+      <Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    );
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const logOut = () =>{
+  const googleLogin = () => {
+    setLoading(
+      <Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    );
+    signInWithPopup(auth, googleProvider);
+  };
+
+  const logOut = () => {
+    setLoading(
+      <Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    );
     return signOut(auth);
-  }
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
   }, []);
 
   const authInfo = {
+    loading,
     user,
     createUser,
     logIn,
+    googleLogin,
     logOut,
     userName,
-    photo
+    photo,
   };
 
   return (

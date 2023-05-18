@@ -3,11 +3,10 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../components/Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-
-
-  const {logIn,logOut} = useContext(AuthContext);
+  const { logIn, logOut ,  googleLogin} = useContext(AuthContext);
 
   const loginHandler = (event) => {
     event.preventDefault();
@@ -20,27 +19,35 @@ const Login = () => {
     console.log(email, password);
 
     logIn(email, password)
-    .then(result=>{
-      const user = result.user;
-      if (user) {
-        Swal.fire({
-          icon: "success",
-          title: "Congratulations",
-          text: "Login Success",
-        });
-      }
-    })
-    .catch(error=>{
-      if (error.message) {
-        return Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Passwords do not match",
-        });
-      }
-    })
-
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          Swal.fire({
+            icon: "success",
+            title: "Congratulations",
+            text: "Login Success",
+          });
+        }
+        form.reset();
+      })
+      .catch((error) => {
+        if (error.message) {
+          return Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Passwords do not match",
+          });
+        }
+      });
   };
+
+  const googleLoginHandler = () => {
+    googleLogin()
+    .then((result) => {})
+    .catch((error) => {
+      console.log(error.message);
+    })
+  }
 
   return (
     <div>
@@ -83,7 +90,11 @@ const Login = () => {
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <input className="btn btn-primary" type="submit" value="Login" />
+                  <input
+                    className="btn btn-primary"
+                    type="submit"
+                    value="Login"
+                  />
                 </div>
               </form>
               <p className="mt-4 text-center">
@@ -92,6 +103,14 @@ const Login = () => {
                   Registration
                 </Link>
               </p>
+              <div>
+                <p className="text-center">Other Login</p>
+
+                <span className="flex justify-center mt-2">
+                  {" "}
+                  <button onClick={googleLoginHandler}><FcGoogle  className="text-center text-3xl"></FcGoogle></button>
+                </span>
+              </div>
             </div>
           </div>
         </div>

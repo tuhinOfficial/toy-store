@@ -1,24 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { getAuth } from "firebase/auth";
-import app from "../../../Firebase/Firebase.config";
-
+import { ThreeDots } from "react-loader-spinner";
 
 const Navbar = () => {
-  const { user, logOut ,userName , photo } = useContext(AuthContext);
+  const { user, logOut, userName, photo, loading } = useContext(AuthContext);
   console.log(user);
 
-  
+  if (loading) {
+    return (
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#070A52"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        visible={true}
+      />
+    );
+  }
 
   const logoutHandler = () => {
-      logOut()
-      .then(result=>{})
-      .catch(error =>{
+    logOut()
+      .then((result) => {})
+      .catch((error) => {
         console.log(error.message);
-      })
-  }
+      });
+  };
 
   const li = (
     <>
@@ -79,27 +89,28 @@ const Navbar = () => {
           </ul>
         </div>
         {user ? (
-          <div className="navbar-end " >
-          <div className="dropdown dropdown-end tooltip"  data-tip={userName}>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full" >
-                <img src={photo} />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+          <div className="navbar-end ">
+            <div
+              className="dropdown dropdown-end tooltip tooltip-bottom"
+              data-tip={userName}
             >
-              <li>
-                <a className="justify-between">
-                  My Toys
-                </a>
-              </li>
-              <li>
-                <button onClick={logoutHandler}>SignOut</button>
-              </li>
-            </ul>
-          </div>
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={photo} />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="justify-between">My Toys</a>
+                </li>
+                <li>
+                  <button onClick={logoutHandler}>SignOut</button>
+                </li>
+              </ul>
+            </div>
           </div>
         ) : (
           <div className="navbar-end">
