@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Login = () => {
 
 
-  const {logIn} = useContext(AuthContext);
+  const {logIn,logOut} = useContext(AuthContext);
 
   const loginHandler = (event) => {
     event.preventDefault();
