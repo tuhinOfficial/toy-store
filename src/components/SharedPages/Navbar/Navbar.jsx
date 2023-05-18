@@ -1,5 +1,6 @@
 import React from "react";
-import { BiLogIn} from "react-icons/bi";
+import { BiLogIn } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const li = (
@@ -53,7 +54,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-orange-400 border-0"><BiLogIn className="mr-2"></BiLogIn><span>LogIn</span></a>
+          <Link to="/login">
+            <button className="btn bg-orange-400 border-0">
+              <BiLogIn className="mr-2"></BiLogIn>
+              <span>LogIn</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

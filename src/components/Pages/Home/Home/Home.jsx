@@ -1,6 +1,6 @@
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { Player} from "@lottiefiles/react-lottie-player";
 import "./Home.css";
+import { Player} from "@lottiefiles/react-lottie-player";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
