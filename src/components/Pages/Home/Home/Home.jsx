@@ -45,6 +45,16 @@ const Home = () => {
         </div>
       </section>
 
+      <section className="shop-category">
+        <div>
+          <h1 className="text-3xl font-semibold text-center">Shop BY Category</h1>
+
+          <div>
+            
+          </div>
+        </div>
+      </section>
+
       <section className="my-20">
         <div className="client">
           <div className="flex justify-evenly py-20 text-white font-bold text-center">

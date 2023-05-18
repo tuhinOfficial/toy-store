@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { logIn, logOut ,  googleLogin} = useContext(AuthContext);
+  const { logIn,googleLogin} = useContext(AuthContext);
 
   const loginHandler = (event) => {
     event.preventDefault();
