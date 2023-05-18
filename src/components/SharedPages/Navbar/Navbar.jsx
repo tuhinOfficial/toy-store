@@ -91,7 +91,7 @@ const Navbar = () => {
         {user ? (
           <div className="navbar-end ">
             <div
-              className="dropdown dropdown-end tooltip tooltip-bottom"
+              className="dropdown dropdown-end tooltip tooltip-left"
               data-tip={userName}
             >
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
