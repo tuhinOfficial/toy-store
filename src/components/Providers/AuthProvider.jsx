@@ -14,6 +14,27 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   console.log(user);
+  
+  const [userName , setUserName] = useState('');
+  const [photo  ,setPhoto] = useState('');
+
+  const auth = getAuth(app);
+  const loggedUser = auth.currentUser;
+  console.log(loggedUser);
+
+  useEffect(() => {
+    if (loggedUser != null) {
+      const Name = user.displayName;
+      setUserName(Name);
+      const photo = user.photoURL;
+      setPhoto(photo);
+  
+      const uid = loggedUser.uid;
+    }
+  })
+  
+  
+  
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -36,7 +57,9 @@ const AuthProvider = ({ children }) => {
     user,
     createUser,
     logIn,
-    logOut
+    logOut,
+    userName,
+    photo
   };
 
   return (

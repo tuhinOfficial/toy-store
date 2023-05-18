@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { getAuth } from "firebase/auth";
+import app from "../../../Firebase/Firebase.config";
+
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut ,userName , photo } = useContext(AuthContext);
   console.log(user);
+
+  
 
   const logoutHandler = () => {
       logOut()
@@ -74,11 +79,11 @@ const Navbar = () => {
           </ul>
         </div>
         {user ? (
-          <div className="navbar-end">
-          <div className="dropdown dropdown-end">
+          <div className="navbar-end " >
+          <div className="dropdown dropdown-end tooltip"  data-tip={userName}>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="" />
+              <div className="w-10 rounded-full" >
+                <img src={photo} />
               </div>
             </label>
             <ul
