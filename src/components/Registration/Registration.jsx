@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { getAuth, updateProfile } from "firebase/auth";
@@ -9,7 +7,6 @@ import app from "../../Firebase/Firebase.config";
 import Swal from "sweetalert2";
 
 const Registration = () => {
-  AOS.init();
   const auth = getAuth(app);
 
   const { createUser } = useContext(AuthContext);

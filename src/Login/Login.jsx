@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../components/Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  AOS.init();
+
 
   const {logIn} = useContext(AuthContext);
 
@@ -23,10 +22,22 @@ const Login = () => {
     logIn(email, password)
     .then(result=>{
       const user = result.user;
-      console.log(user);
+      if (user) {
+        Swal.fire({
+          icon: "success",
+          title: "Congratulations",
+          text: "Login Success",
+        });
+      }
     })
     .catch(error=>{
-      console.log(error);
+      if (error.message) {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Passwords do not match",
+        });
+      }
     })
 
   };
@@ -56,6 +67,7 @@ const Login = () => {
                     placeholder="Email"
                     className="input input-bordered"
                     name="email"
+                    required
                   />
                 </div>
                 <div className="form-control">
@@ -67,6 +79,7 @@ const Login = () => {
                     placeholder="password"
                     className="input input-bordered"
                     name="password"
+                    required
                   />
                 </div>
                 <div className="form-control mt-6">
