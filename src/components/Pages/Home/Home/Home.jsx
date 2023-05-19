@@ -3,6 +3,7 @@ import "./Home.css";
 import { Player} from "@lottiefiles/react-lottie-player";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ToysGallery from "./ToysGallery/ToysGallery";
 
 const Home = () => {
 
@@ -41,7 +42,10 @@ const Home = () => {
 
       <section className="trending my-20">
         <div>
-          <h2 className="text-3xl font-semibold text-center">Trending Toys</h2>
+          <h2 className="text-3xl font-semibold text-center">Toys Gallery</h2>
+          <div className="mt-20">
+            <ToysGallery></ToysGallery>
+          </div>
         </div>
       </section>
 
