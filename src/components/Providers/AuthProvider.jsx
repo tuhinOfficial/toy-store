@@ -15,7 +15,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [email , setEmail] = useState(null);
+  const [email, setEmail] = useState(null);
   // console.log(email);
   const [loading, setLoading] = useState(true);
   // console.log(user);
@@ -25,10 +25,10 @@ const AuthProvider = ({ children }) => {
   const [photo, setPhoto] = useState("");
 
   const auth = getAuth(app);
-  const loggedUser = auth.currentUser;
-  console.log(loggedUser);
 
   useEffect(() => {
+    const loggedUser = auth.currentUser;
+    console.log(loggedUser);
     if (loggedUser != null) {
       const Name = user.displayName;
       setUserName(Name);
@@ -120,7 +120,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     userName,
     photo,
-    email
+    email,
   };
 
   return (

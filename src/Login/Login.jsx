@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../components/Providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 
@@ -22,13 +22,16 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         if (user) {
+          
           Swal.fire({
             icon: "success",
             title: "Congratulations",
             text: "Login Success",
-          });
+          });   
+          
         }
         form.reset();
+        return <Navigate to="/" replace></Navigate>
       })
       .catch((error) => {
         if (error.message) {

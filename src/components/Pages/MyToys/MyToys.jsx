@@ -32,7 +32,7 @@ const MyToys = () => {
                 <th>Image</th>
                 <th>Toy Name</th>
                 <th>Category</th>
-                <th>Favorite Color</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>

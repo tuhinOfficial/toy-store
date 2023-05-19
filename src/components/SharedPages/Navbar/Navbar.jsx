@@ -2,11 +2,22 @@ import React, { useContext } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { RotatingLines } from "react-loader-spinner";
 
 const Navbar = () => {
   const { user, logOut, userName, photo, loading } = useContext(AuthContext);
-  
 
+  // if (loading) {
+  //   return (
+  //     <RotatingLines
+  //       strokeColor="grey"
+  //       strokeWidth="5"
+  //       animationDuration="0.75"
+  //       width="96"
+  //       visible={true}
+  //     />
+  //   );
+  // }
 
   const logoutHandler = () => {
     logOut()
@@ -24,8 +35,12 @@ const Navbar = () => {
       <Link to="/alltoys">All Toys</Link>
       {user ? (
         <>
-          <Link to='/mytoys'><li>My Toys</li></Link>
-          <Link to="/addtoys"><li>Add A Toys</li></Link>
+          <Link to="/mytoys">
+            <li>My Toys</li>
+          </Link>
+          <Link to="/addtoys">
+            <li>Add A Toys</li>
+          </Link>
         </>
       ) : (
         <></>
