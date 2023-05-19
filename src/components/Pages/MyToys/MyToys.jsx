@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { MagnifyingGlass } from "react-loader-spinner";
 import MyToysRow from "./MyToysRow";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { email, loading } = useContext(AuthContext);
@@ -18,6 +18,44 @@ const MyToys = () => {
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, email);
+
+  const handleDelete = (id) => {
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/alltoys/mytoys/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Congratulations!',
+                text: 'Item deleted successfully',
+              })
+
+              const remaining = myToys.filter(toys => toys._id !== id);
+              setMyToys(remaining);
+            }
+          });
+      }
+    })
+
+    
+  };
 
   return (
     <div>
@@ -38,7 +76,7 @@ const MyToys = () => {
             <tbody>
               {/* row 1 */}
               {
-                myToys.map(singleToy => <MyToysRow data={singleToy} key={singleToy._id}></MyToysRow>)
+                myToys.map(singleToy => <MyToysRow data={singleToy} handleDelete={handleDelete} key={singleToy._id}></MyToysRow>)
               }
             </tbody>
           </table>

@@ -1,10 +1,14 @@
 import React from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
 
-const MyToysRow = ({ data }) => {
+const MyToysRow = ({ data ,handleDelete }) => {
   console.log(data);
-  const { toyName, category, photo } = data;
+  const { _id, toyName, category, photo } = data;
+
+  
+
   return (
     <>
       <tr>
@@ -22,7 +26,7 @@ const MyToysRow = ({ data }) => {
             <button>
               <BsPencilSquare className="text-orange-400"></BsPencilSquare>
             </button>
-            <button>
+            <button onClick={() => handleDelete(_id)}>
               <AiFillDelete className="text-red-500"></AiFillDelete>
             </button>
           </div>

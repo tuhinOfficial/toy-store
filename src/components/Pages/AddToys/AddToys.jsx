@@ -178,11 +178,11 @@ const AddToys = () => {
                   <option value="select" disabled>
                     Select Category
                   </option>
-                  <option value="Teddy Bear">Teddy Bear</option>
-                  <option value="Horse">Horse</option>
-                  <option value="Dinosaur">Dinosaur</option>
-                  <option value="Dogs">Dogs</option>
-                  <option value="Cats">Cats</option>
+                  <option value="Classic Cars">Classic Cars</option>
+                  <option value="Space Explorers">Space Explorers</option>
+                  <option value="Oceanic Adventures">Oceanic Adventures</option>
+                  <option value="Fire and Rescue">Fire and Rescue</option>
+                  <option value="Extreme Sports Vehicles">Extreme Sports Vehicles</option>
                 </select>
               </div>
 
