@@ -2,12 +2,11 @@ import React from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
-const MyToysRow = ({ data ,handleDelete }) => {
+const MyToysRow = ({ data, handleDelete }) => {
   console.log(data);
   const { _id, toyName, category, photo } = data;
-
-  
 
   return (
     <>
@@ -23,9 +22,11 @@ const MyToysRow = ({ data ,handleDelete }) => {
         <td>{category}</td>
         <td>
           <div className="text-2xl flex gap-4">
-            <button>
-              <BsPencilSquare className="text-orange-400"></BsPencilSquare>
-            </button>
+            <Link to={`/update/${_id}`}>
+              <button>
+                <BsPencilSquare className="text-orange-400"></BsPencilSquare>
+              </button>
+            </Link>
             <button onClick={() => handleDelete(_id)}>
               <AiFillDelete className="text-red-500"></AiFillDelete>
             </button>
