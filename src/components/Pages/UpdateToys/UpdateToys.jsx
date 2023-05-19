@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const UpdateToys = () => {
   const data = useLoaderData();
@@ -53,15 +54,33 @@ const UpdateToys = () => {
     };
     console.log(updateToy);
 
-    fetch(`http://localhost:3000/alltoys/mytoys/${_id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateToy)
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Update This Toy Details",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/alltoys/mytoys/${_id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updateToy),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount > 0) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Congratulations!',
+                    text: 'Your Item was successfully updated',
+                  })
+            }
+          });
+      }
+    });
   };
 
   return (
