@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const AddToys = () => {
   const [selected, setSelected] = useState("");
+
+  const {email,userName} = useContext(AuthContext);
+  console.log(email,userName);
   // console.log(selected);
 
   const handleSelect = (event) => {
@@ -101,9 +105,11 @@ const AddToys = () => {
                 <input
                   type="text"
                   placeholder="Seller Name"
+                  defaultValue={userName}
                   className="input input-bordered w-full max-w-xs"
                   name="seller"
                   required
+                  readOnly
                 />
               </div>
               <div className="form-control w-full max-w-xs">
@@ -113,9 +119,11 @@ const AddToys = () => {
                 <input
                   type="email"
                   placeholder="Seller Email"
+                  defaultValue={email}
                   name="email"
                   className="input input-bordered w-full max-w-xs"
                   required
+                  readOnly
                 />
               </div>
 

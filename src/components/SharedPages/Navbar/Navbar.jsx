@@ -2,25 +2,11 @@ import React, { useContext } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { ThreeDots } from "react-loader-spinner";
 
 const Navbar = () => {
   const { user, logOut, userName, photo, loading } = useContext(AuthContext);
-  // console.log(user);
+  
 
-  if (loading) {
-    return (
-      <ThreeDots
-        height="80"
-        width="80"
-        radius="9"
-        color="#070A52"
-        ariaLabel="three-dots-loading"
-        wrapperStyle={{}}
-        visible={true}
-      />
-    );
-  }
 
   const logoutHandler = () => {
     logOut()
@@ -38,7 +24,7 @@ const Navbar = () => {
       <Link to="/alltoys">All Toys</Link>
       {user ? (
         <>
-          <li>My Toys</li>
+          <Link to='/mytoys'><li>My Toys</li></Link>
           <Link to="/addtoys"><li>Add A Toys</li></Link>
         </>
       ) : (

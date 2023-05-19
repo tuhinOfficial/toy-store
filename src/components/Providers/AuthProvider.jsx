@@ -15,6 +15,8 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [email , setEmail] = useState(null);
+  // console.log(email);
   const [loading, setLoading] = useState(true);
   // console.log(user);
   const googleProvider = new GoogleAuthProvider();
@@ -24,7 +26,7 @@ const AuthProvider = ({ children }) => {
 
   const auth = getAuth(app);
   const loggedUser = auth.currentUser;
-  // console.log(loggedUser);
+  console.log(loggedUser);
 
   useEffect(() => {
     if (loggedUser != null) {
@@ -104,6 +106,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setEmail(currentUser.email);
       setLoading(false);
     });
   }, []);
@@ -117,6 +120,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     userName,
     photo,
+    email
   };
 
   return (

@@ -20,7 +20,7 @@ const Error = () => {
         {error.status}
       </h2>
       <h6 className="text-center font-semibold text-2xl text-orange-500 mt-2">
-        {error.error.message}
+        {error.error?.message}
       </h6>
 
       <div className="flex justify-center mt-4">
