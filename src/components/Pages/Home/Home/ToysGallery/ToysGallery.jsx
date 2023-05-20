@@ -36,7 +36,7 @@ const ToysGallery = () => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className="mySwiper2 w-full md:[w-50%]"
       >
         <SwiperSlide>
           <img src="https://i.ibb.co/72vGsC4/pexels-magda-ehlers-1319572.jpg" />

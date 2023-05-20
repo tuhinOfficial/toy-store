@@ -57,12 +57,12 @@ const Navbar = () => {
   return (
     <div className="my-5">
       <div className="navbar bg-base-100">
-        <div className="navbar-start">
+        <div className="navbar-start w-[70%] md:w-[50%]">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-10 w-10"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -83,8 +83,8 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center gap-x-1">
-            <img src="https://i.ibb.co/L6zc9Qk/logo.png" alt="" />
-            <h1 className="text-3xl font-semibold text-orange-400">
+            <img className="hidden md:block" src="https://i.ibb.co/L6zc9Qk/logo.png" alt="" />
+            <h1 className=" text-xl md:text-3xl  font-semibold text-orange-400">
               Toy Store
             </h1>
           </div>

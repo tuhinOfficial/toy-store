@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AllToysCard from "./AllToysCard";
 
+
 const AllToys = () => {
+  const [allToys, setAllToys] = useState([]);
 
-    const [allToys , setAllToys] = useState([]);
 
-    useEffect(()=>{
-        fetch('https://toy-store-sever.vercel.app/alltoys')
-        .then(res => res.json())
-        .then(data => setAllToys(data))
-    },[])
+  useEffect(() => {
+    fetch("https://toy-store-sever.vercel.app/alltoys")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+      });
+  }, []);
 
   return (
     <div>
@@ -19,7 +22,7 @@ const AllToys = () => {
             <input
               type="text"
               placeholder="Search Toys"
-              className="input input-bordered w-96"
+              className="input input-bordered md:w-96"
             />
             <button className="btn">
               <svg
@@ -41,13 +44,11 @@ const AllToys = () => {
         </div>
       </div>
 
-
-        <div className="grid grid-cols-3 gap-x-5 gap-y-10 my-20 ml-10">
-            {
-                allToys.map(toys=><AllToysCard toys={toys} key={toys._id}></AllToysCard> )
-            }
-        </div>
-
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-10 my-20 md:ml-10">
+        {allToys.map((toys) => (
+          <AllToysCard toys={toys} key={toys._id}></AllToysCard>
+        ))}
+      </div>
     </div>
   );
 };

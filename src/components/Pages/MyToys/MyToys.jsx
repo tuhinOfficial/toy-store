@@ -17,7 +17,7 @@ const MyToys = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
-  }, email);
+  }, [email]);
 
   const handleDelete = (id) => {
 

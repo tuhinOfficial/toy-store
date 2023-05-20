@@ -85,7 +85,7 @@ const AddToys = () => {
       <div className="my-10 bg-base-200 py-20">
         <form onSubmit={addToyHandler}>
           <div className="w-[70%] mx-auto">
-            <div className="grid grid-cols-2 gap-y-5 ml-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 md:ml-8">
               <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text font-semibold">Toy Name</span>

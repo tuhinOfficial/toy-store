@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const loggedUser = auth.currentUser;
-    console.log(loggedUser);
+    // console.log(loggedUser);
     if (loggedUser != null) {
       const Name = user.displayName;
       setUserName(Name);
@@ -113,6 +113,7 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     loading,
+    setLoading,
     user,
     createUser,
     logIn,
