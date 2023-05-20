@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { BiLogIn } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { RotatingLines } from "react-loader-spinner";
 
+
+
 const Navbar = () => {
   const { user, logOut, userName, photo, loading } = useContext(AuthContext);
+  const Navigate = useNavigate();
 
   // if (loading) {
   //   return (
@@ -21,7 +24,9 @@ const Navbar = () => {
 
   const logoutHandler = () => {
     logOut()
-      .then((result) => {})
+      .then((result) => {
+        <Navigate to="/" replace></Navigate>
+      })
       .catch((error) => {
         console.log(error.message);
       });
@@ -45,7 +50,7 @@ const Navbar = () => {
       ) : (
         <></>
       )}
-      <li>Blogs</li>
+      <Link to="blog"><li>Blogs</li></Link>
     </>
   );
 

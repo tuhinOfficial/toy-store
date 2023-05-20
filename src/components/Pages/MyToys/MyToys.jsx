@@ -4,13 +4,13 @@ import MyToysRow from "./MyToysRow";
 import Swal from "sweetalert2";
 
 const MyToys = () => {
-  const { email, loading } = useContext(AuthContext);
+  const { email, loading ,userName } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
 
   console.log(myToys);
 
   console.log(email);
-  const url = `http://localhost:3000/alltoys/mytoys?email=${email}`;
+  const url = `https://toy-store-sever.vercel.app/alltoys/mytoys?email=${email}`;
   console.log(url);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const MyToys = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/alltoys/mytoys/${id}`, {
+        fetch(`https://toy-store-sever.vercel.app/alltoys/mytoys/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const MyToys = () => {
 
   return (
     <div>
-      <h2 className="text-center my-10 text-3xl font-semibold">Toys of User :  {email}</h2>
+      <h2 className="text-center my-10 text-3xl font-semibold">Toys of :  {userName}</h2>
 
       <div className="mb-60">
         <div className="overflow-x-auto">

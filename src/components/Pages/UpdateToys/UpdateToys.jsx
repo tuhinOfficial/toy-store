@@ -64,7 +64,7 @@ const UpdateToys = () => {
       confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/alltoys/mytoys/${_id}`, {
+        fetch(`https://toy-store-sever.vercel.app/alltoys/mytoys/${_id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updateToy),

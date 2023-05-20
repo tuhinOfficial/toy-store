@@ -9,6 +9,7 @@ import AddToys from "../Pages/AddToys/AddToys";
 import MyToys from "../Pages/MyToys/MyToys";
 import PrivateRoute from "./PrivateRoute";
 import UpdateToys from "../Pages/UpdateToys/UpdateToys";
+import Blog from "../Pages/Blog/Blog";
 
 
 const router = createBrowserRouter([
@@ -44,8 +45,12 @@ const router = createBrowserRouter([
             {
                 path:"update/:id",
                 element:<UpdateToys></UpdateToys>,
-                loader : ({params})=> fetch(`http://localhost:3000/alltoys/mytoys/${params.id}`),
+                loader : ({params})=> fetch(`https://toy-store-sever.vercel.app/alltoys/mytoys/${params.id}`),
                 
+            },
+            {
+                path: "blog",
+                element: <Blog></Blog>
             }
         ]
     }

@@ -20,7 +20,9 @@ const Login = () => {
 
     logIn(email, password)
       .then((result) => {
+        
         const user = result.user;
+        
         if (user) {
           
           Swal.fire({
@@ -31,7 +33,8 @@ const Login = () => {
           
         }
         form.reset();
-        return <Navigate to="/" replace></Navigate>
+       <Navigate to="/" replace></Navigate>
+        
       })
       .catch((error) => {
         if (error.message) {
