@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Swal from "sweetalert2";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "../components/Providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { logIn,googleLogin} = useContext(AuthContext);
+  const Navigate = useNavigate();
 
   const loginHandler = (event) => {
     event.preventDefault();
@@ -33,7 +34,7 @@ const Login = () => {
           
         }
         form.reset();
-       <Navigate to="/" replace></Navigate>
+       Navigate("/")
         
       })
       .catch((error) => {

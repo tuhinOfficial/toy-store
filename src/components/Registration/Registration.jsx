@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
@@ -10,6 +10,7 @@ const Registration = () => {
   const auth = getAuth(app);
 
   const { createUser } = useContext(AuthContext);
+  const Navigate = useNavigate();
 
   const registrationHandler = (event) => {
     event.preventDefault();
@@ -61,7 +62,9 @@ const Registration = () => {
           displayName: name,
           photoURL: photo,
         })
-          .then((res) => {})
+          .then((res) => {
+            Navigate("/login")
+          })
           .catch((error) => {});
 
         Swal.fire({

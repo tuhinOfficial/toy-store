@@ -41,16 +41,6 @@ const AllToys = () => {
         </div>
       </div>
 
-      <div className="my-10">
-        <select defaultValue='def' className="select  select-bordered w-full max-w-xs">
-          <option value='def' disabled>
-            Sort By
-          </option>
-          <option>Name</option>
-          <option>Price</option>
-          <option>Category</option>
-        </select>
-      </div>
 
         <div className="grid grid-cols-3 gap-x-5 gap-y-10 my-20 ml-10">
             {

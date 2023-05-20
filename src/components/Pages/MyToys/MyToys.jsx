@@ -61,6 +61,17 @@ const MyToys = () => {
     <div>
       <h2 className="text-center my-10 text-3xl font-semibold">Toys of :  {userName}</h2>
 
+      <div className="my-10">
+        <select defaultValue='def' className="select  select-bordered w-full max-w-xs">
+          <option value='def' disabled>
+            Sort By
+          </option>
+          <option>Name</option>
+          <option>Price</option>
+          <option>Category</option>
+        </select>
+      </div>
+
       <div className="mb-60">
         <div className="overflow-x-auto">
           <table className="table w-full">
