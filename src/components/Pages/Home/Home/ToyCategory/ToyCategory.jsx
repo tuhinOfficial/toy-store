@@ -9,7 +9,7 @@ const ToyCategory = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/alltoys/category?category=${activeTab}`)
+    fetch(`https://toy-store-sever.vercel.app/alltoys/category?category=${activeTab}`)
       .then((res) => res.json())
       .then((result) => setData(result));
   }, [activeTab]);
@@ -46,8 +46,8 @@ const ToyCategory = () => {
               <Tab>Extreme Sports Vehicles</Tab>
             </TabList>
             <TabPanel>
-              <div className="flex justify-evenly">
-                {data.map((singleData) => (
+              <div className="md:flex justify-evenly">
+                {data.slice(0,3).map((singleData) => (
                   <ToyCategoryCard
                     props={singleData}
                     key={singleData.index}
@@ -56,8 +56,8 @@ const ToyCategory = () => {
               </div>
             </TabPanel>
             <TabPanel>
-            <div className="flex justify-evenly">
-                {data.map((singleData) => (
+            <div className="md:flex justify-evenly space-y-5">
+                {data.slice(0,3).map((singleData) => (
                   <ToyCategoryCard
                     props={singleData}
                     key={singleData.index}
@@ -66,8 +66,8 @@ const ToyCategory = () => {
               </div>
             </TabPanel>
             <TabPanel>
-            <div className="flex">
-                {data.map((singleData) => (
+            <div className="md:flex justify-evenly space-y-5">
+                {data.slice(0,3).map((singleData) => (
                   <ToyCategoryCard
                     props={singleData}
                     key={singleData.index}
@@ -76,8 +76,8 @@ const ToyCategory = () => {
               </div>
             </TabPanel>
             <TabPanel>
-            <div className="flex justify-evenly">
-                {data.map((singleData) => (
+            <div className="md:flex justify-evenly space-y-5">
+                {data.slice(0,3).map((singleData) => (
                   <ToyCategoryCard
                     props={singleData}
                     key={singleData.index}
@@ -86,8 +86,8 @@ const ToyCategory = () => {
               </div>
             </TabPanel>
             <TabPanel>
-            <div className="flex justify-evenly">
-                {data.map((singleData) => (
+            <div className="md:flex justify-evenly space-y-5">
+                {data.slice(0,3).map((singleData) => (
                   <ToyCategoryCard
                     props={singleData}
                     key={singleData.index}
