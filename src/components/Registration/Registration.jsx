@@ -63,7 +63,7 @@ const Registration = () => {
           photoURL: photo,
         })
           .then((res) => {
-            Navigate("/login")
+            Navigate("/")
           })
           .catch((error) => {});
 

@@ -88,7 +88,7 @@ const Home = () => {
           Customer Review
         </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 md:ml-16 overflow-x-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 md:ml-16 overflow-x-hidden md:overflow-auto">
           <div data-aos="fade-down-right" data-aos-duration="1000" data-aos-offset="100" className="card w-72 mx-auto md:w-96 bg-primary text-primary-content text-center">
             <div className="card-body">
               <div className="avatar">

@@ -29,17 +29,6 @@ const AddToys = () => {
     const description = form.description.value;
     const photo = form.photo.value;
 
-    console.log(
-      toyName,
-      sellerName,
-      sellerEmail,
-      price,
-      rating,
-      quantity,
-      category,
-      description,
-      photo
-    );
     const newToy = {
       toyName,
       sellerName,
@@ -51,7 +40,7 @@ const AddToys = () => {
       description,
       photo,
     };
-    console.log(newToy);
+    
 
     fetch("https://toy-store-sever.vercel.app/alltoys", {
       method: "POST",
