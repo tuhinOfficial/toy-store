@@ -50,7 +50,9 @@ const Login = () => {
 
   const googleLoginHandler = () => {
     googleLogin()
-    .then((result) => {})
+    .then((result) => {
+      Navigate("/")
+    })
     .catch((error) => {
       console.log(error.message);
     })

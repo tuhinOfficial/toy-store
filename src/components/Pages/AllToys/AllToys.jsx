@@ -1,18 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import AllToysCard from "./AllToysCard";
+import { useLoaderData } from "react-router-dom";
 
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
 
+  const allData = useLoaderData(allToys);
+  console.log(allData);
 
   useEffect(() => {
     fetch("https://toy-store-sever.vercel.app/alltoys")
       .then((res) => res.json())
       .then((data) => {
-        setAllToys(data);
+        setAllToys(data.slice(0,18));
       });
   }, []);
+
+  const seeAllHandler = () => {
+    setAllToys(allData)
+  }
 
   return (
     <div>
@@ -51,7 +58,7 @@ const AllToys = () => {
       </div>
 
       <div className="mb-10 flex justify-center">
-        <button className="btn btn-primary">See All</button>
+        <button onClick={seeAllHandler} className="btn btn-primary">See All</button>
       </div>
     </div>
   );
