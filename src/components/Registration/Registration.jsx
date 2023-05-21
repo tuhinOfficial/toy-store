@@ -94,7 +94,7 @@ const Registration = () => {
               style={{ height: "400px", width: "300px" }}
             ></Player>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-[50%] shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full md:max-w-[50%] shadow-2xl bg-base-100">
             <div className="card-body">
               <h1 className="text-4xl font-bold">Registration now!</h1>
               <form onSubmit={registrationHandler}>

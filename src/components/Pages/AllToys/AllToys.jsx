@@ -49,6 +49,10 @@ const AllToys = () => {
           <AllToysCard toys={toys} key={toys._id}></AllToysCard>
         ))}
       </div>
+
+      <div className="mb-10 flex justify-center">
+        <button className="btn btn-primary">See All</button>
+      </div>
     </div>
   );
 };
